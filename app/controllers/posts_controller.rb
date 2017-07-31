@@ -9,7 +9,15 @@ class PostsController < ApplicationController
 
 	def create
 		@post = Post.create(post_params)
-		redirect_to @post
+
+		if @post.save
+			flash[:success] = "Your post has been saved"
+			redirect_to @post
+		else
+			flash[:alert] = "You need an image to complete the post!"
+			render :new
+		end
+
 	end
 
 	def show
