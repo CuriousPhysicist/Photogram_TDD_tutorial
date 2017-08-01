@@ -1,10 +1,20 @@
-<%= simple_form_for @post do |f| %>
-	<%= f.input :image %>
+<div class="text-center">
+	<%= image_tag @post.image.url(:medium) %>
+</div>
 
-	<%= f.input :caption %>
+<div class="form-wrapper">
+	<%= simple_form_for @post do |f| %>
+		<%= f.input :image %>
 
-	<%= f.button :submit, as: "Update Post" %>
+		<%= f.input :caption %>
 
-<% end %>
+		<%= f.button :submit, as: "Update Post" %>
 
-<%= link_to "Delete Post", post_path(@post), method: :delete %>
+	<% end %>
+</div>
+
+<div class="text-center edit-links">
+	<%= link_to "Delete Post", post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %>
+	| 
+	<%= link_to "Cancel", posts_path %>
+</div>
