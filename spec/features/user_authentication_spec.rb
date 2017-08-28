@@ -31,7 +31,17 @@ feature 'User authentication' do
 		click_button 'Log in'
 
 		click_link 'Logout'
-		expect(page).to have_content('Signed out successfully.')
+		expect(page).to have_content('You need to sign in or sign up before continuing')
+	end
+
+	scenario 'cannot view index posts without logged in' do
+		visit '/'
+		expect(page).to have_content('You need to sign in or sign up before continuing.')
+	end
+
+	scenario 'cannot create a new post without logged in' do
+		visit new_post_path
+		expect(page).to have_content('You need to sign in or sign up before continuing.')
 	end
 
 end
