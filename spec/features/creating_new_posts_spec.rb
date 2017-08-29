@@ -1,8 +1,20 @@
 require 'rails_helper.rb'
 
 feature 'Creating Posts' do
-	scenario 'can create a post' do
+	background do
+		user = create :user
+
 		visit '/'
+
+		fill_in 'Email', with: 'rubinator@ruby.com'
+		fill_in 'Password', with: 'illbeback'
+
+		click_button 'Log in'
+
+	end
+
+	scenario 'can create a post' do
+		
 		click_link 'New Post'
 		attach_file(' Image', "spec/files/images/coffee.jpeg")
 		fill_in 'Caption', with: 'nom nom nom #coffeetime'
@@ -18,7 +30,7 @@ feature 'Creating Posts' do
 		# Click the 'Create Post' button
 		# Expect the page to say 'You need an image to complete the post!'
 
-		visit '/'
+		
 		click_link 'New Post'
 		fill_in 'Caption', with: 'I hate pictures, let me post...'
 		click_button 'Create Post'
