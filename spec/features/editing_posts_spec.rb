@@ -6,12 +6,7 @@ feature 'Editing posts' do
 		post = create(:post)
 		user = create :user
 
-		visit '/'
-
-		fill_in 'Email', with: 'rubinator@ruby.com'
-		fill_in 'Password', with: 'illbeback'
-
-		click_button 'Log in'
+		sign_in_with user
 
 		find(:xpath, "//a[contains(@href, 'posts/1')]").click
 		click_link 'Edit Post'
