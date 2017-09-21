@@ -4,12 +4,13 @@ feature 'Creating Posts' do
 	background do
 		user = create :user
 
-		visit '/'
+		sign_in_with user
+		# visit '/'
 
-		fill_in 'Email', with: 'rubinator@ruby.com'
-		fill_in 'Password', with: 'illbeback'
+		# fill_in 'Email', with: 'rubinator@ruby.com'
+		# fill_in 'Password', with: 'illbeback'
 
-		click_button 'Log in'
+		# click_button 'Log in'
 
 	end
 
