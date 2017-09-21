@@ -7,12 +7,7 @@ feature 'Index displays a list of posts' do
 		post_two = create(:post, caption: "This is the second post")
 		user = create :user
 
-		visit '/'
-
-		fill_in 'Email', with: 'rubinator@ruby.com'
-		fill_in 'Password', with: 'illbeback'
-
-		click_button 'Log in'
+		sign_in_with user
 		
 	end
 	
